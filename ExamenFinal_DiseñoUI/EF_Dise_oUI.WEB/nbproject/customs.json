@@ -1,0 +1,17 @@
+{
+    "elements": {
+        "p:graphicImage": {},
+        "p:panel": {},
+        "h:panelGrid": {},
+        "p:dataGrid": {},
+        "p:dialog": {},
+        "p:commandButton": {},
+        "p:outputPanel": {},
+        "f:facet": {},
+        "f:setPropertyActionListener": {},
+        "h:outputText": {},
+        "h:form": {},
+        "p:panelGrid": {}
+    },
+    "attributes": {}
+}

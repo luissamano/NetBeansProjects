@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+
+            <p:dataGrid id="cars" var="car" value="#{dataGridView.cars}" columns="3" paginator="true" rows="9">
+                <f:facet name="header">
+                </f:facet>
+
+                <p:panel header="#{car.nombre}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <p:graphicImage name="img/bitstrips.jpg"/> 
+
+                        <p:commandButton update="@form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" styleClass="ui-btn-inline">
+                           
+                            <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
+
+            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail">
+                    <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" styleClass="ui-car-detail">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.nombre}-big.gif"/> 
+                        </f:facet>
+
+                        <h:outputText value="Telefono:" />
+                        <h:outputText value="#{dataGridView.selectedCar.telefono}" />
+
+                        
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+
